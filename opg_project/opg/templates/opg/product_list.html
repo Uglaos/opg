@@ -1,0 +1,52 @@
+{% extends "opg/base.html" %}
+{% block content %}
+
+    <div class="container-fluid w-75">
+        <div class="row">
+            <div class="col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <a class="btn btn-info btn-md mt-4 mb-4 float-right" href="{% url 'add_product' %}" role="button">Dodaj novi</a>
+        <table class="table table-striped sortable" data-toggle="table">
+            <thead>
+                <tr>
+                    <th data-sortable="true">Naziv proizvoda</th>
+                    <th data-sortable="true">Kategorija proizvoda</th>
+                    <th>Detalji</th>
+                    <th>Brisanje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in product_list %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td><a class="ml-2" href="/product/{{ product.id }}">Detalji</a></td>
+                        <td><a href="{% url 'delete_product' product.id %}" data-toggle="modal" data-target="#MyModal">Brisanje</a></td>
+                        <div id ="MyModal" class="modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body mb-5 mt-5">
+                                        <form action="{% url 'delete_product' product.id %}" method="post">{% csrf_token %}
+                                            <h4 class="mb-5">Da li želite izbrisati proizvod?</h4>
+                                            <input type="submit" class="btn btn-danger btn-md ml-3" value="Da"/>
+                                            <button type="submit" class="btn btn-primary ml-3" data-dismiss="modal">Ne</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "opg/base.html" %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+{% block content %}
+    <div class="container-fluid w-75">
+        <form method="POST">
+            {% csrf_token %}
+            <h2 class="mt-5 mb-5">Dodavanje proizvoda</h2>
+            <fieldset class="form-group border border-secondary p-2">
+                <legend class="pl-2 pr-2 mb-4 w-auto">Podaci</legend>
+                {% crispy p_form %}
+                <input type="submit" name="submit" value="Kreiraj proizvod" class="btn btn-primary btn btn-info btn-md mr-4">
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}

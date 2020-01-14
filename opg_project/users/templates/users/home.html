@@ -1,0 +1,14 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+            <main role="main" class="container-fluid w-75">
+                <div class="jumbotron">
+                    <h1 class="display-4 text-center">Dobrodošli na Vaš OPG Portal</h1>
+                    <hr class="my-4">
+                    <div class="row justify-content-center pt-4">
+                        <a class="btn btn-info btn-lg mr-4" href="{% url 'login' %}" role="button">Login</a>
+                        <a class="btn btn-info btn-lg ml-4" href="{% url 'register' %}" role="button">Registracija</a>
+                    </div>
+                </div>
+            </main>
+{% endblock content %}

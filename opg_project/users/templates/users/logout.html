@@ -1,0 +1,12 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+    <div class="container-fluid w-75 mt-5">
+        <h2>Niste vise logirani</h2>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                <a class="ml-2" href="{% url 'login' %}">Logirajte se ponovo</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

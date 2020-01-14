@@ -1,0 +1,22 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+{% block content %}
+    <div class="container-fluid w-75 pb-5">
+        <form method="POST" class="uniForm">
+            {% csrf_token %}
+            <h2 class="mt-3 mb-5">Registracija novog korisnika i OPG-a</h2>
+            <fieldset class="form-group border border-secondary p-2">
+                <legend class="pl-1 pr-1 mb-4 w-auto">PODACI</legend>
+                {% crispy p_form %}
+                {% crispy u_form %}
+                <input type="submit" name="submit" value="Kreiraj korisnika" class="btn btn-primary btn btn-info btn-md mr-4 ml-4">
+                <div class="border-top pt-3 ml-4">
+                    <small class="text-muted">
+                        Imate racun? <a class="ml-2" href="{% url 'login' %}">Prijavite se</a>
+                    </small>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+{% block content %}
+    <div class="container-fluid w-75">
+        <div class="row">
+            <div class="col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid w-75 mt-5">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group border border-secondary pt-5 pb-5 pl-2 pr-2">
+                {% crispy form %}
+                <input type="submit" name="submit" value="Login" class="btn btn-primary btn btn-info btn-md ml-5 mb-4 mt-4">
+                <div class="border-top pt-3 ml-5">
+                    <small class="text-muted">
+                        Nemate racun?<a class="ml-2" href="{% url 'register' %}">Registrirajte se</a>
+                    </small>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+{% endblock content %}
