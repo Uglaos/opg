@@ -1,6 +1,6 @@
 asgiref==3.2.3
 decorator==4.4.1
-Django==3.0
+Django==3.0.7
 django-crispy-forms==1.8.1
 Faker==3.0.0
 Jinja2==2.10.3
